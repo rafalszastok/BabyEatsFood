@@ -1,0 +1,47 @@
+
+targets:
+  BabyEatsFood: 
+    type: application
+    platform: iOS
+    sources: 
+      - path: Front/Sources
+    settings:
+      base:
+        APP_NAME: BabyEatsFood
+        INFOPLIST_FILE: Modules/Front/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood
+        MARKETING_VERSION: 1.0
+        CURRENT_PROJECT_VERSION: 1
+    dependencies:
+      - sdk: MobileCoreServices.framework
+      - sdk: AVFoundation.framework
+      - carthage: Kingfisher
+      - carthage: Realm
+      - carthage: RealmSwift
+
+    preBuildScripts:
+      - script: |
+          if which swiftlint >/dev/null; then
+              swiftlint
+          else
+              echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+          fi
+        name: SwiftLint
+  BabyEatsFoodUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: 
+      - path: Front/UnitTests
+    dependencies:
+      - target: BabyEatsFood
+      - carthage: Nimble
+      - carthage: Quick
+      - carthage: OHHTTPStubs
+  
+  BabyEatsFoodSnapshotTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Front/SnapshotTests
+    dependencies:
+      - target: BabyEatsFood
