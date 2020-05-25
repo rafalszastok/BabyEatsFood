@@ -6,12 +6,12 @@
 //  Copyright © 2017 Andrés Pizá Bückmann. All rights reserved.
 //
 
-import UIKit
 import ObjectMapper
+import UIKit
 
 enum NutritionDataPer: String {
     case hundredGrams = "100g"
-    case serving = "serving"
+    case serving
 }
 
 enum EnvironmentImpact: String {
@@ -273,7 +273,7 @@ struct Product: Mappable {
         barcode <- map[OFFJson.CodeKey]
         brands <- (map[OFFJson.BrandsKey], ArrayTransform())
         categories <- (map[OFFJson.CategoriesKey], ArrayTransform())
-        categoriesTags <- (map[OFFJson.CategoriesTagsKey])
+        categoriesTags <- map[OFFJson.CategoriesTagsKey]
         nutriscore <- map[OFFJson.NutritionGradesKey]
         // novaGroup should be Int, but might be String
         novaGroupAsInt <- (map[OFFJson.NovaGroupKey], IntTransform())

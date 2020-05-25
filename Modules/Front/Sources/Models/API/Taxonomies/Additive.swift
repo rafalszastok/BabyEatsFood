@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 
 class Additive: Object {
 

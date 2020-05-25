@@ -6,8 +6,8 @@
 //  Copyright © 2020 Rafal Szastok. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
 final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
@@ -28,7 +28,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
             return
         }
 
-        if (captureSession.canAddInput(videoInput)) {
+        if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
             failed()
@@ -37,7 +37,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
 
         let metadataOutput = AVCaptureMetadataOutput()
 
-        if (captureSession.canAddOutput(metadataOutput)) {
+        if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
 
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
@@ -65,7 +65,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if (captureSession?.isRunning == false) {
+        if captureSession?.isRunning == false {
             captureSession.startRunning()
         }
     }
@@ -73,7 +73,7 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if (captureSession?.isRunning == true) {
+        if captureSession?.isRunning == true {
             captureSession.stopRunning()
         }
     }

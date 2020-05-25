@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 
 class Nutriment: Object {
 
@@ -25,7 +25,7 @@ class Nutriment: Object {
 
         self.mainName = names.chooseForCurrentLanguage()?.value ?? ""
         self.indexedNames = names.map({ (tag) -> String in
-            return tag.languageCode.appending(":").appending(tag.value)
+            tag.languageCode.appending(":").appending(tag.value)
         }).joined(separator: " ||| ") // group all names to be able to query on only one field, independently of language
     }
 

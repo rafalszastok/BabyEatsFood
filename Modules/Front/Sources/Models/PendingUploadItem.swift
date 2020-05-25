@@ -38,7 +38,7 @@ class PendingUploadItem {
         product.barcode = barcode
         product.name = productName
         product.quantity = quantity
-        product.packaging = packaging?.split(separator: ",").compactMap {String($0)}
+        product.packaging = packaging?.split(separator: ",").compactMap { String($0) }
         product.lang = language
         product.categories = categories
         product.ingredientsList = ingredientsList

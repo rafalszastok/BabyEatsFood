@@ -34,11 +34,11 @@ class HistoryItem: Object {
         switch interval {
         case 0:
             return .last24h
-        case 1...7:
+        case 1 ... 7:
             return .fewDays
-        case 8...30:
+        case 8 ... 30:
             return .fewWeeks
-        case 31...90:
+        case 31 ... 90:
             return .fewMonths
         default:
             return .longTime

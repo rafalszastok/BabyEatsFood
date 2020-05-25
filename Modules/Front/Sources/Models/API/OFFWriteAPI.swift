@@ -16,7 +16,7 @@ struct OFFWriteAPI {
     static let Password = "password="
     static let Name = "product_name="
     static let GenericName = "generic_name="
-    static let Quantity  = "quantity="
+    static let Quantity = "quantity="
     static let ExpirationDate = "expiration_date="
     static let PurchasePlaces = "purchase_places="
     static let Stores = "stores="

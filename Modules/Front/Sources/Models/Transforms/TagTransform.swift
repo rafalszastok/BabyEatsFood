@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 
 public class Tag: Object {
     @objc dynamic var languageCode: String = ""
@@ -25,7 +25,7 @@ public class Tag: Object {
         let lang = languageCode ?? Bundle.main.preferredLocalizations.first ?? "en"
 
         if let tag = tags.first(where: { (tag: Tag) -> Bool in
-            return tag.languageCode == lang
+            tag.languageCode == lang
         }) {
             return tag
         }

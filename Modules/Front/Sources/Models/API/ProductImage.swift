@@ -61,7 +61,7 @@ struct ProductImage {
                 "imageType": type.rawValue,
                 "fileName": fileName,
                 "message": "Unable to get UIImageJPEGRepresentation"
-                ])
+            ])
             log.error(error)
             return nil
         }
@@ -71,7 +71,7 @@ struct ProductImage {
             let imageURL = documentsURL.appendingPathComponent(fileName)
             try data.write(to: imageURL)
             return fileName
-        } catch let error {
+        } catch {
             log.error(error)
             return nil
         }
@@ -83,7 +83,7 @@ struct ProductImage {
             let imageURL = documentsURL.appendingPathComponent(imageName)
             let imageData = try Data(contentsOf: imageURL)
             return UIImage(data: imageData)
-        } catch let error {
+        } catch {
             log.error(error)
             return nil
         }
@@ -94,7 +94,7 @@ struct ProductImage {
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let imageURL = documentsURL.appendingPathComponent(fileName)
             try FileManager.default.removeItem(at: imageURL)
-        } catch let error {
+        } catch {
             log.error(error)
         }
     }
