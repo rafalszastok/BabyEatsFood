@@ -1,6 +1,6 @@
 name: BabyEatsFood
 
-fileGroups: [README.md, Cartfile,  .gitignore, .swiftlint.yml, .swiftformat]
+fileGroups: [README.md, Cartfile,  .gitignore, .swiftlint.yml, .swiftformat, project.yml]
 
 options:
   deploymentTarget: 
