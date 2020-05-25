@@ -18,15 +18,8 @@ targets:
       - carthage: Kingfisher
       - carthage: Realm
       - carthage: RealmSwift
-
-    preBuildScripts:
-      - script: |
-          if which swiftlint >/dev/null; then
-              swiftlint
-          else
-              echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-          fi
-        name: SwiftLint
+      - carthage: ObjectMapper
+      
   BabyEatsFoodUnitTests:
     type: bundle.unit-test
     platform: iOS
@@ -34,9 +27,6 @@ targets:
       - path: Front/UnitTests
     dependencies:
       - target: BabyEatsFood
-      - carthage: Nimble
-      - carthage: Quick
-      - carthage: OHHTTPStubs
   
   BabyEatsFoodSnapshotTests:
     type: bundle.unit-test
@@ -45,3 +35,4 @@ targets:
       - path: Front/SnapshotTests
     dependencies:
       - target: BabyEatsFood
+      - carthage: FBSnapshotTestCase      
