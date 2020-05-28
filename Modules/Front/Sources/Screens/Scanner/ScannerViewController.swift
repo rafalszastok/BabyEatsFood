@@ -15,8 +15,7 @@ final class ScannerViewController: UIViewController {
 
     typealias ConstructionResult = (
         captureSession: AVCaptureSession,
-        previewLayer: AVCaptureVideoPreviewLayer
-    )
+        previewLayer: AVCaptureVideoPreviewLayer)
 
     override func viewDidLoad() {
         super.viewDidLoad()

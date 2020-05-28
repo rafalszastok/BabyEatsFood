@@ -5,6 +5,7 @@ targets:
     platform: iOS
     sources: 
       - path: Front/Sources
+        name: Front
     settings:
       base:
         DEVELOPMENT_TEAM: QVQ7TY6473
@@ -26,6 +27,7 @@ targets:
     platform: iOS
     sources: 
       - path: Front/UnitTests
+        name: FrontUnitTests
     dependencies:
       - target: BabyEatsFood
   
@@ -34,6 +36,7 @@ targets:
     platform: iOS
     sources:
       - path: Front/SnapshotTests
+        name: FrontSnapshotTests
     dependencies:
       - target: BabyEatsFood
       - carthage: FBSnapshotTestCase      

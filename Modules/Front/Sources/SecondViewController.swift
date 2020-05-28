@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+final class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
 }

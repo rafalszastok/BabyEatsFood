@@ -15,7 +15,7 @@ extension Array {
     }
 }
 
-final class Logger {
+public final class Logger {
     func error(_ message: String) {
         print(message)
     }
