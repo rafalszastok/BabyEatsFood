@@ -185,7 +185,6 @@ public struct Product: Decodable {
         }
     }
 
-
     init() {}
     init?(map: Map) {}
 

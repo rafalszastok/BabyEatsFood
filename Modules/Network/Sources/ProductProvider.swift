@@ -23,14 +23,16 @@ public final class ProductProvider {
             with: url,
             completionHandler: {
                 [weak self]
-                data, response, error in
+                data, _, _ in
                 guard let data = data else {
                     return
                 }
+                let str = String(decoding: data, as: UTF8.self)
+                print("Data is \(str)")
                 let result = try? self?.jsonDecoder.decode(Product.self, from: data)
 
                 print("Result is \(result)")
-                
+
         })
         task.resume()
     }

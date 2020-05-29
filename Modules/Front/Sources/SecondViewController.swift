@@ -6,8 +6,8 @@
 //  Copyright © 2020 Rafal Szastok. All rights reserved.
 //
 
-import UIKit
 import Network
+import UIKit
 
 final class SecondViewController: UIViewController {
     override func viewDidLoad() {

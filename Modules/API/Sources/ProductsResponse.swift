@@ -11,7 +11,7 @@ public final class ProductsResponse: Mappable {
     var products = [Product]()
     var product: Product?
 
-    required public init?(map: Map) {}
+    public required init?(map: Map) {}
 
     public func mapping(map: Map) {
         totalProducts <- map[OFFJson.CountKey]
