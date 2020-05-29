@@ -11,7 +11,7 @@ settings:
   CODE_SIGN_IDENTITY: iPhone Developer
 
 include:
-  - Modules/api.yml
   - Modules/front.yml
-  #- xcodegen/network.yml
-  #- xcodegen/services.yml
+  - Modules/api.yml
+  - Modules/network.yml
+  #- Modules/services.yml
