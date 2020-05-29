@@ -1,20 +1,22 @@
 
-
 import Foundation
-
 import ObjectMapper
 
-struct Ingredient: Decodable {
-    var text: String?
-    var id: String?
-    var rank: String?
+public struct Ingredient: Codable {
+    let vegetarian: String?
+    let id, text: String
+    let percentMax: Double
+    let rank: Int?
+    let vegan: String?
+    let percentMin: Double
+    let fromPalmOil, hasSubIngredients: String?
 
-    init() {}
-    init?(map: Map) {}
-
-    mutating func mapping(map: Map) {
-        text <- map[OFFJson.IngredientsElementTextKey]
-        id <- map[OFFJson.IngredientsElementIdKey]
-        rank <- map[OFFJson.IngredientsElementRankKey]
+    enum CodingKeys: String, CodingKey {
+        case vegetarian, id, text
+        case percentMax = "percent_max"
+        case rank, vegan
+        case percentMin = "percent_min"
+        case fromPalmOil = "from_palm_oil"
+        case hasSubIngredients = "has_sub_ingredients"
     }
 }

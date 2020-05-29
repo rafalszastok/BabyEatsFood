@@ -411,8 +411,4 @@ struct OFFJson {
         ]
     }
 
-    static var languageCodes: String {
-        // &lc=ja,nl,de,fr,it,es
-        return "&lc=" + Locale.preferredLanguageCodes.joined(separator: OFFJson.FieldsSeparator)
-    }
 }
