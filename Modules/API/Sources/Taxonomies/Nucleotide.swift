@@ -1,7 +1,7 @@
 
 import Foundation
 
-public final class Nucleotide {
+public final class Nucleotide: Decodable {
 
     public var code = ""
 

@@ -4,13 +4,10 @@ import Foundation
 
 import ObjectMapper
 
-struct Ingredient: Mappable {
+struct Ingredient: Decodable {
     var text: String?
     var id: String?
     var rank: String?
-
-    /// used to get dynamic ingredients properties
-    var rawJson: [String: Any]?
 
     init() {}
     init?(map: Map) {}
@@ -19,7 +16,5 @@ struct Ingredient: Mappable {
         text <- map[OFFJson.IngredientsElementTextKey]
         id <- map[OFFJson.IngredientsElementIdKey]
         rank <- map[OFFJson.IngredientsElementRankKey]
-
-        rawJson = map.JSON
     }
 }

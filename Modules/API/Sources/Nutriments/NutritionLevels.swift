@@ -4,7 +4,7 @@ import Foundation
 
 import ObjectMapper
 
-public enum NutritionLevel: String {
+public enum NutritionLevel: String, Codable {
     case low
     case moderate
     case high
@@ -29,7 +29,7 @@ public final class NutritionLevelTransform {
     }
 }
 
-public struct NutritionLevels {
+public struct NutritionLevels: Decodable {
     var fat: NutritionLevel?
     var saturatedFat: NutritionLevel?
     var sugars: NutritionLevel?

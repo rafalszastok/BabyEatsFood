@@ -1,7 +1,7 @@
 
 import Foundation
 
-public final class Nutriment {
+public final class Nutriment: Decodable {
 
     public var code = ""
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public final class IngredientsAnalysisDetail {
+public final class IngredientsAnalysisDetail: Codable {
     var type: String = ""
     var icon: String = ""
     var title: String = ""

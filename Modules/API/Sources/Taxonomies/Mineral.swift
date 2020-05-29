@@ -1,7 +1,7 @@
 
 import Foundation
 
-public final class Mineral {
+public final class Mineral: Decodable {
 
     public var code = ""
 

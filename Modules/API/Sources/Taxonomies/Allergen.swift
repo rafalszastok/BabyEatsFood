@@ -2,7 +2,7 @@
 
 import Foundation
 
-public final class Allergen {
+public final class Allergen: Decodable {
 
     public var code = ""
 

@@ -4,7 +4,7 @@ import Foundation
 
 import ObjectMapper
 
-struct Nutriments {
+struct Nutriments: Codable {
     var energy: NutrimentItem?
     var fats: [NutrimentItem]
     var carbohydrates: [NutrimentItem]

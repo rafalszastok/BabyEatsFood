@@ -3,13 +3,14 @@ targets:
     settings:
       base:
         APPLICATION_EXTENSION_API_ONLY: true
-        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood
+        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood.network
         SWIFT_VERSION: 5.1
     sources: 
       - path: Network/Sources
         name: Network
     dependencies:
       - carthage: ObjectMapper
+      - target: API
     platform: iOS
     type: framework
     scheme:

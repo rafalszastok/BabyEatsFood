@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct NutrimentItem {
+struct NutrimentItem: Codable {
     var total: Double?
     var per100g: Double?
     var perServing: Double?

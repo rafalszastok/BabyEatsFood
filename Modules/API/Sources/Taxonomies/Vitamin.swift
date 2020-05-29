@@ -2,7 +2,7 @@
 
 import Foundation
 
-public final class Vitamin {
+public final class Vitamin: Decodable {
 
     public var code = ""
 

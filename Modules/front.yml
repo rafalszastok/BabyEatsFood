@@ -3,9 +3,6 @@ targets:
   BabyEatsFood: 
     type: application
     platform: iOS
-    sources: 
-      - path: Front/Sources
-        name: Front
     settings:
       base:
         DEVELOPMENT_TEAM: QVQ7TY6473
@@ -14,7 +11,12 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood
         MARKETING_VERSION: 1.0
         CURRENT_PROJECT_VERSION: 1
+    sources: 
+      - path: Front/Sources
+        name: Front
     dependencies:
+      - target: API
+      - target: Network
       - sdk: MobileCoreServices.framework
       - sdk: AVFoundation.framework
       - carthage: Kingfisher

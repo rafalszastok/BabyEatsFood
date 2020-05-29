@@ -1,12 +1,12 @@
 import ObjectMapper
 import UIKit
 
-enum NutritionDataPer: String {
+enum NutritionDataPer: String, Codable {
     case hundredGrams = "100g"
     case serving
 }
 
-enum EnvironmentImpact: String {
+enum EnvironmentImpact: String, Codable {
     case low = "en:low"
     case medium = "en:medium"
     case high = "en:high"
@@ -65,7 +65,7 @@ enum ImageSizeCategory {
     }
 }
 
-struct Product: Mappable {
+public struct Product: Decodable {
     // var name: String?
     private var nameDecoded: String?
     private var genericNameDecoded: String?
@@ -130,9 +130,6 @@ struct Product: Mappable {
     var nucleotides: [Nucleotide]?
     var otherNutrients: [Nutriment]?
 
-    private var selectedImages: [String: Any] = [:]
-    private var images: [ImageTypeCategory: [ImageSizeCategory: [String: String]]] = [:]
-
     private struct KeyPreFix {
         static let ProductName = "product_name_"
         static let GenericName = "generic_name_"
@@ -188,57 +185,6 @@ struct Product: Mappable {
         }
     }
 
-    var frontImageUrl: String? {
-        if let frontImages = images[.front] {
-            if let displayFrontImages = frontImages[.display] {
-                if let validCode = matchedLanguageCode(codes: Locale.preferredLanguageCodes) {
-                    if let validImageURLString = displayFrontImages[validCode] {
-                        return validImageURLString
-                    }
-                }
-            }
-        }
-        return frontImageUrlDecoded
-    }
-
-    var frontImageSmallUrl: String? {
-        if let frontImages = images[.front] {
-            if let displayFrontImages = frontImages[.small] {
-                if let validCode = matchedLanguageCode(codes: Locale.preferredLanguageCodes) {
-                    if let validImageURLString = displayFrontImages[validCode] {
-                        return validImageURLString
-                    }
-                }
-            }
-        }
-        return frontImageSmallUrlDecoded
-    }
-
-    var ingredientsImageUrl: String? {
-        if let ingredientsImages = images[.ingredients] {
-            if let displayIngredientsImages = ingredientsImages[.display] {
-                if let validCode = matchedLanguageCode(codes: Locale.preferredLanguageCodes) {
-                    if let validImageURLString = displayIngredientsImages[validCode] {
-                        return validImageURLString
-                    }
-                }
-            }
-        }
-        return ingredientsImageUrlDecoded
-    }
-
-    var nutritionTableImage: String? {
-        if let nutritionImages = images[.nutrition] {
-            if let displayNutritionImages = nutritionImages[.display] {
-                if let validCode = matchedLanguageCode(codes: Locale.preferredLanguageCodes) {
-                    if let validImageURLString = displayNutritionImages[validCode] {
-                        return validImageURLString
-                    }
-                }
-            }
-        }
-        return nutritionTableImageDecoded
-    }
 
     init() {}
     init?(map: Map) {}
@@ -315,20 +261,6 @@ struct Product: Mappable {
             return code
         }
         return lang
-    }
-
-    private mutating func decodeImages(_ selectedImages: [String: Any]) {
-        for imageTypes in selectedImages {
-            if let validImages = decodeTypes(imageTypes.key, value: imageTypes.value, for: .front) {
-                images[.front] = [validImages.0: validImages.1]
-            }
-            if let validImages = decodeTypes(imageTypes.key, value: imageTypes.value, for: .ingredients) {
-                images[.ingredients] = [validImages.0: validImages.1]
-            }
-            if let validImages = decodeTypes(imageTypes.key, value: imageTypes.value, for: .nutrition) {
-                images[.nutrition] = [validImages.0: validImages.1]
-            }
-        }
     }
 
     private func decodeTypes(_ key: String, value: Any, for sizeCategory: ImageTypeCategory) -> (ImageSizeCategory, [String: String])? {

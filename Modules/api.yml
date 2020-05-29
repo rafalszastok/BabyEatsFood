@@ -3,7 +3,7 @@ targets:
     settings:
       base:
         APPLICATION_EXTENSION_API_ONLY: true
-        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood
+        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood.api
         SWIFT_VERSION: 5.1
     sources: 
       - path: API/Sources

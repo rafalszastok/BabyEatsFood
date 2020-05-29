@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import Network
 
 final class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        ProductProvider().obtainProduct(productId: "070177029630")
     }
 }
