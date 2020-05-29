@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ProductResponse: Codable {
-    let code: String
-    let product: Product
-    let status: Int
-    let statusVerbose: String
+public struct ProductResponse: Codable {
+    public let code: String
+    public let product: Product
+    public let status: Int
+    public let statusVerbose: String
 
     enum CodingKeys: String, CodingKey {
         case code, product, status

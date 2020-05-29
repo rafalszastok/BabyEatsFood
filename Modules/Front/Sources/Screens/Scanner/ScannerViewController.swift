@@ -8,8 +8,11 @@
 
 import AVFoundation
 import UIKit
+import Network
+import API
 
 final class ScannerViewController: UIViewController {
+    let productProvider = ProductProvider()
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -57,13 +60,29 @@ final class ScannerViewController: UIViewController {
         return .portrait
     }
 
-    func found(code: String) {
-        let ac = UIAlertController(
-            title: "Scanning found code",
-            message: code,
-            preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+    func found(barCode: String) {
+        //070177029630
+        //0009800895007
+        print("Found bar code \(barCode)")
+        productProvider.obtainProduct(
+            productId: barCode,
+            onComplete: {
+                [weak self] result in
+
+                switch result {
+                case .failure(let error):
+                    print("Error occured \(error)")
+                case .success(let productResponse):
+                    let ac = UIAlertController(
+                        title: "Scanning found product",
+                        message: productResponse.product.productName,
+                        preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self?.present(ac, animated: true)
+                }
+
+        })
+
     }
 
     private static func makeCaptureSession(
@@ -118,6 +137,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
 
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        found(code: stringValue)
+        found(barCode: stringValue)
     }
 }

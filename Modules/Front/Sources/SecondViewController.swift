@@ -18,6 +18,5 @@ final class SecondViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        ProductProvider().obtainProduct(productId: "070177029630")
     }
 }

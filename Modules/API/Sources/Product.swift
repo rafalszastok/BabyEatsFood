@@ -128,7 +128,6 @@ public struct Product: Codable {
     public let servingSizeImported, productNameEnImported, quantity, id: String
     public let sortkey: Int
     public let sources: [Source]
-    public let sourcesFields: SourcesFields
     public let storesTags: [String]
     public let tracesFromUser: String
     public let uniqueScansN: Int
@@ -293,7 +292,6 @@ public struct Product: Codable {
         case servingSizeImported = "serving_size_imported"
         case sortkey
         case sources
-        case sourcesFields = "sources_fields"
         case states
         case statesHierarchy = "states_hierarchy"
         case statesTags = "states_tags"

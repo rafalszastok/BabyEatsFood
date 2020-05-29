@@ -68,7 +68,6 @@ public struct Source: Codable {
     }
 }
 
-// MARK: - SourcesFields
 public struct SourcesFields: Codable {
     public let orgDatabaseUsda: OrgDatabaseUsda
 
@@ -77,7 +76,6 @@ public struct SourcesFields: Codable {
     }
 }
 
-// MARK: - OrgDatabaseUsda
 public struct OrgDatabaseUsda: Codable {
     let fdcID, fdcCategory: String
     let publicationDate: Date
