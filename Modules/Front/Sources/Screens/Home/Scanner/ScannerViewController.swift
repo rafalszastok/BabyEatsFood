@@ -16,30 +16,19 @@ final class ScannerViewController: UIViewController {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
-    typealias ConstructionResult = (
-        captureSession: AVCaptureSession,
-        previewLayer: AVCaptureVideoPreviewLayer)
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.black
-
-        let result = ScannerViewController.makeCaptureSession(
-            viewBounds: view.layer.bounds,
-            delegate: self)
-
-        captureSession = result?.captureSession
-        previewLayer = result?.previewLayer
-
+        previewLayer.frame = view.layer.bounds
         view.layer.addSublayer(previewLayer)
-        result?.captureSession.startRunning()
+        captureSession.startRunning()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if captureSession?.isRunning == false {
+        if captureSession.isRunning.not {
             captureSession.startRunning()
         }
     }
@@ -47,7 +36,7 @@ final class ScannerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if captureSession?.isRunning == true {
+        if captureSession.isRunning {
             captureSession.stopRunning()
         }
     }
@@ -58,6 +47,11 @@ final class ScannerViewController: UIViewController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+
+    func inject(captureSessionResult: CaptureSessionFactory.ConstructionResult) {
+        captureSession = captureSessionResult.captureSession
+        previewLayer = captureSessionResult.previewLayer
     }
 
     func found(barCode: String) {
@@ -81,44 +75,6 @@ final class ScannerViewController: UIViewController {
                     self?.present(ac, animated: true)
                 }
         })
-    }
-
-    private static func makeCaptureSession(
-        viewBounds: CGRect,
-        delegate: AVCaptureMetadataOutputObjectsDelegate) -> ConstructionResult? {
-
-        let captureSession = AVCaptureSession()
-
-        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
-            assertionFailure("Cannot create capture device")
-            return nil
-        }
-        guard let videoInput = try? AVCaptureDeviceInput(device: videoCaptureDevice) else {
-            assertionFailure("Cannot create capture device input")
-            return nil
-        }
-
-        guard captureSession.canAddInput(videoInput) else {
-            assertionFailure("Cannot add video input to session")
-            return nil
-        }
-        captureSession.addInput(videoInput)
-
-        let metadataOutput = AVCaptureMetadataOutput()
-
-        guard captureSession.canAddOutput(metadataOutput) else {
-            assertionFailure("Cannot add output to session")
-            return nil
-        }
-        captureSession.addOutput(metadataOutput)
-        metadataOutput.setMetadataObjectsDelegate(delegate, queue: DispatchQueue.main)
-        metadataOutput.metadataObjectTypes = [.ean8, .ean13, .pdf417]
-
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = viewBounds
-        previewLayer.videoGravity = .resizeAspectFill
-
-        return (captureSession: captureSession, previewLayer: previewLayer)
     }
 }
 

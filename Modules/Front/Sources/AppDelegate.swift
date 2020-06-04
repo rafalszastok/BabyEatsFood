@@ -10,11 +10,19 @@ import UIKit
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+    var flowRouter: FlowRouter!
+
     func application(
         _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool {
 
+        let window = UIWindow()
+        self.window = window
+        flowRouter = FlowRouter(window: window)
+        flowRouter.presentHomePage()
         return true
     }
 
