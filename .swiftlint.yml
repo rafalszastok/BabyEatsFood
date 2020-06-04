@@ -1,0 +1,46 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+disabled_rules: # rule identifiers to exclude from running
+  - closure_parameter_position
+  - operator_usage_whitespace
+  - operator_whitespace
+  - todo
+  - type_body_length
+  - type_name
+  - nesting
+  - function_body_length
+  - reduce_boolean
+  - large_tuple
+opt_in_rules:
+  - closure_spacing
+  - fatal_error_message
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - multiline_arguments
+  - multiline_parameters
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - vertical_parameter_alignment_on_call
+  - weak_delegate
+  - function_parameter_count
+  - cyclomatic_complexity
+  - block_based_kvo
+file_length: 600
+line_length: 120
+force_cast:
+  severity: error
+force_try:
+  severity: error
+force_unwrapping:
+  severity: error
+implicitly_unwrapped_optional:
+  severity: error
+force_unwrapping:
+  severity: error
+identifier_name:
+  min_length: 2 # only warning
+  max_length: # warning and error
+    warning: 50
+    error: 60

@@ -1,0 +1,17 @@
+name: BabyEatsFood
+
+fileGroups: [README.md, Cartfile,  .gitignore, .swiftlint.yml, .swiftformat, project.yml]
+
+options:
+  deploymentTarget: 
+    iOS: 13.0
+
+settings:
+  SWIFT_VERSION: 5.1
+  CODE_SIGN_IDENTITY: iPhone Developer
+
+include:
+  - Modules/front.yml
+  - Modules/api.yml
+  - Modules/network.yml
+  #- Modules/services.yml
