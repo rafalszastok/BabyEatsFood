@@ -8,7 +8,7 @@
 import Foundation
 
 public struct CategoryProperties: Codable {
-    let ciqualFoodNameEn: String
+    let ciqualFoodNameEn: String? = nil
 
     enum CodingKeys: String, CodingKey {
         case ciqualFoodNameEn = "ciqual_food_name:en"

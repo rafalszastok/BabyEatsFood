@@ -6,10 +6,10 @@
 //  Copyright © 2020 Rafal Szastok. All rights reserved.
 //
 
-import AVFoundation
-import UIKit
-import Network
 import API
+import AVFoundation
+import Network
+import UIKit
 
 final class ScannerViewController: UIViewController {
     let productProvider = ProductProvider()
@@ -61,8 +61,8 @@ final class ScannerViewController: UIViewController {
     }
 
     func found(barCode: String) {
-        //070177029630
-        //0009800895007
+        // 070177029630
+        // 0009800895007
         print("Found bar code \(barCode)")
         productProvider.obtainProduct(
             productId: barCode,
@@ -80,9 +80,7 @@ final class ScannerViewController: UIViewController {
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self?.present(ac, animated: true)
                 }
-
         })
-
     }
 
     private static func makeCaptureSession(
@@ -127,7 +125,6 @@ final class ScannerViewController: UIViewController {
 extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-//        captureSession.stopRunning()
 
         guard let metadataObject = metadataObjects.first,
             let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
@@ -138,5 +135,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
 
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         found(barCode: stringValue)
+        captureSession.stopRunning()
+        let dispatchTime = DispatchTime.now() + DispatchTimeInterval.milliseconds(3000)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            [weak self] in
+            self?.captureSession.startRunning()
+
+        }
     }
 }

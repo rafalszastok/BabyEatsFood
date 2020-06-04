@@ -21,7 +21,7 @@ public final class EntityProvider<EntityType: Decodable> {
 
     public typealias EntityResult = Result<EntityType, NetworkError>
     public typealias OnCompleteAction = (EntityResult) -> Void
-    private typealias OnNetworkCompleted = ((Result<Data, NetworkError>)) -> Void
+    private typealias OnNetworkCompleted = (Result<Data, NetworkError>) -> Void
 
     private let session: URLSession
     private let jsonDecoder = JSONDecoder()
@@ -91,13 +91,11 @@ public final class EntityProvider<EntityType: Decodable> {
         do {
             let product = try jsonDecoder.decode(EntityType.self, from: data)
             return .success(product)
-        }
-        catch {
+        } catch {
             return .failure(error)
         }
     }
 }
-
 
 public final class ProductProvider {
     private let entityProvider: EntityProvider<ProductResponse>
@@ -124,8 +122,7 @@ public final class ProductProvider {
         do {
             let product = try jsonDecoder.decode(ProductResponse.self, from: data)
             return .success(product)
-        }
-        catch {
+        } catch {
             return .failure(error)
         }
     }
