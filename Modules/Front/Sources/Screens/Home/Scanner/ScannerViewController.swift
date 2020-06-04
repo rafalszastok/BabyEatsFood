@@ -10,9 +10,12 @@ import API
 import AVFoundation
 import Network
 import UIKit
+import Swinject
 
 final class ScannerViewController: UIViewController {
     let productProvider = ProductProvider()
+
+    var dependencies: Dependencies!
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -49,7 +52,11 @@ final class ScannerViewController: UIViewController {
         return .portrait
     }
 
-    func inject(captureSessionResult: CaptureSessionFactory.ConstructionResult) {
+    func inject(
+        dependencies: Dependencies,
+        captureSessionResult: CaptureSessionFactory.ConstructionResult) {
+
+        self.dependencies = dependencies
         captureSession = captureSessionResult.captureSession
         previewLayer = captureSessionResult.previewLayer
     }
@@ -58,23 +65,24 @@ final class ScannerViewController: UIViewController {
         // 070177029630
         // 0009800895007
         print("Found bar code \(barCode)")
-        productProvider.obtainProduct(
-            productId: barCode,
-            onComplete: {
-                [weak self] result in
 
-                switch result {
-                case .failure(let error):
-                    print("Error occured \(error)")
-                case .success(let productResponse):
-                    let ac = UIAlertController(
-                        title: "Scanning found product",
-                        message: productResponse.product.productName,
-                        preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self?.present(ac, animated: true)
-                }
-        })
+        dependencies.productService.product(
+            productId: barCode,
+            onComplete: handle(productResult:))
+    }
+
+    private func handle(productResult: ProductProvider.ProductResult) {
+        switch productResult {
+        case .failure(let error):
+            print("Error occured \(error)")
+        case .success(let productResponse):
+            let ac = UIAlertController(
+                title: "Scanning found product",
+                message: productResponse.product.productName,
+                preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
 }
 

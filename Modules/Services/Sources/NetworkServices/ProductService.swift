@@ -15,3 +15,7 @@ public protocol ProductService {
 
     func product(productId: String, onComplete: @escaping OnCompleteAction)
 }
+
+public protocol ProductServiceContainer {
+    var productService: ProductService { get }
+}

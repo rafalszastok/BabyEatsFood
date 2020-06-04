@@ -17,6 +17,7 @@ targets:
     dependencies:
       - target: API
       - target: Network
+      - target: Services
       - sdk: CoreServices.framework
       - sdk: AVFoundation.framework
       - carthage: Kingfisher

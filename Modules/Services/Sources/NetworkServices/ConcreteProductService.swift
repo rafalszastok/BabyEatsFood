@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-public final class ConcreteProductProvider: ProductService {
+public final class ConcreteProductService: ProductService {
 
     private let productProvider = ProductProvider(session: URLSession.shared)
 

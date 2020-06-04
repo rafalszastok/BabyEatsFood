@@ -18,12 +18,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let windowScene = (scene as? UIWindowScene) else {
+        guard let windowScene = scene as? UIWindowScene else {
             return
         }
 
         let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window.windowScene = windowScene // <-- Window Scene set to UIWindow
+        window.windowScene = windowScene
         self.window = window
 
         flowRouter = FlowRouter(window: window)

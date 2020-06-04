@@ -9,6 +9,7 @@ import UIKit
 
 final class FlowRouter {
     let window: UIWindow
+    let mainServicesContainer = MainServicesContainer()
 
     init(window: UIWindow) {
         self.window = window
@@ -22,7 +23,11 @@ final class FlowRouter {
             assertionFailure("Cannot make capture session")
             return
         }
-        scannerViewController.inject(captureSessionResult: captureSessionResult)
+
+        scannerViewController.inject(
+            dependencies: mainServicesContainer,
+            captureSessionResult: captureSessionResult)
+
         window.rootViewController = homeTabbar
         window.makeKeyAndVisible()
     }
