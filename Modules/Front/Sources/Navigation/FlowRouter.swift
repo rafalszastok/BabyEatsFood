@@ -15,7 +15,6 @@ final class FlowRouter {
     }
 
     func presentHomePage() {
-        self.window.makeKeyAndVisible()
         let homeTabbar = HomeTabbarPresenter.make()
         let scannerViewController = homeTabbar.viewControllers![0] as! ScannerViewController
 
@@ -24,6 +23,7 @@ final class FlowRouter {
             return
         }
         scannerViewController.inject(captureSessionResult: captureSessionResult)
-        self.window.rootViewController = homeTabbar
+        window.rootViewController = homeTabbar
+        window.makeKeyAndVisible()
     }
 }

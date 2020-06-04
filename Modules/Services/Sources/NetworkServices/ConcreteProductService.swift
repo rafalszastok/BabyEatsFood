@@ -13,7 +13,7 @@ public final class ConcreteProductProvider: ProductService {
     private let productProvider = ProductProvider(session: URLSession.shared)
 
     public init() {}
-    
+
     public func product(productId: String, onComplete: @escaping OnCompleteAction) {
         productProvider.obtainProduct(productId: productId, onComplete: onComplete)
     }

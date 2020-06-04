@@ -5,9 +5,9 @@
 //  Created by Rafal Szastok on 04/06/2020.
 //
 
-import Swinject
-import Network
 import API
+import Network
+import Swinject
 
 public protocol ProductService {
 

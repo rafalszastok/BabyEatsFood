@@ -17,12 +17,14 @@ targets:
     dependencies:
       - target: API
       - target: Network
-      - sdk: MobileCoreServices.framework
+      - sdk: CoreServices.framework
       - sdk: AVFoundation.framework
       - carthage: Kingfisher
       - carthage: Realm
       - carthage: RealmSwift
       - carthage: ObjectMapper
+    scheme:
+      name: "BabyEatsFood"
       
   BabyEatsFoodUnitTests:
     type: bundle.unit-test

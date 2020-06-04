@@ -21,4 +21,3 @@ public extension Bool {
         return self == true
     }
 }
-

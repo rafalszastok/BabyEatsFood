@@ -13,7 +13,6 @@ enum CaptureSessionFactory {
         captureSession: AVCaptureSession,
         previewLayer: AVCaptureVideoPreviewLayer)
 
-
     static func make(
         delegate: AVCaptureMetadataOutputObjectsDelegate) -> ConstructionResult? {
 
