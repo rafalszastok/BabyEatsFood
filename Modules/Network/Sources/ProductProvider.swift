@@ -6,6 +6,7 @@
 //
 
 import API
+import Combine
 import Foundation
 
 public enum NetworkError: Error {
@@ -28,14 +29,14 @@ public final class ProductProvider {
         self.entityProvider = EntityProvider<ProductResponse>(session: session)
     }
 
-    public func obtainProduct(languageCode: String, productId: String, onComplete: @escaping OnCompleteAction) {
+    public func obtainProduct(languageCode: String, productId: String) -> AnyPublisher<ProductResponse, EntityError> {
 
         let urlString = "https://\(languageCode).openfoodfacts.org/api/v0/product/\(productId).json"
         guard let url = URL(string: urlString) else {
-            return
+            return AnyPublisher<ProductResponse, EntityError>(Empty<ProductResponse, EntityError>())
         }
 
         let urlRequest = URLRequest(url: url)
-        entityProvider.obtain(urlRequest: urlRequest, onComplete: onComplete)
+        return entityProvider.obtain(urlRequest: urlRequest)
     }
 }

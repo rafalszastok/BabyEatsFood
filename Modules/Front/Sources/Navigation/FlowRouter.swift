@@ -5,15 +5,15 @@
 //  Created by Rafal Szastok on 04/06/2020.
 //
 
-import UIKit
 import API
 import Combine
+import UIKit
 
 final class FlowRouter {
     let window: UIWindow
     let mainServicesContainer = MainServicesContainer()
     var subscriptions = Set<AnyCancellable>()
-    
+
     init(window: UIWindow) {
         self.window = window
         bind()

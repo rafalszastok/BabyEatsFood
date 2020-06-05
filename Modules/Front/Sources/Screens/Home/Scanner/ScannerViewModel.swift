@@ -5,8 +5,9 @@
 //  Created by Rafal Szastok on 25/05/2020.
 //
 
-import Foundation
 import API
+import Combine
+import Foundation
 import Services
 
 public final class ScannerViewModel {
@@ -14,7 +15,8 @@ public final class ScannerViewModel {
     typealias Dependencies = HomeNavigationServiceContainer & ProductServiceContainer
 
     let dependencies: Dependencies
-
+    var subscriptions = Set<AnyCancellable>()
+    
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
@@ -22,17 +24,25 @@ public final class ScannerViewModel {
     func found(barCode: String) {
         // 070177029630
         // 0009800895007
-        dependencies.productService.product(
-            productId: barCode,
-            onComplete: handle(productResult:))
+        dependencies.productService
+            .product(productId: barCode)
+            .sink(receiveCompletion: { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            }, receiveValue: {
+                [weak self]
+                productResponse in
+                if let product = productResponse.product {
+                    self?.dependencies.homeNavigationService.presentDetails(for: product)
+                } else {
+                    print("Handle: show error product not found")
+                }
+            })
+            .store(in: &subscriptions)
     }
 
-    private func handle(productResult: ProductService.ProductResult) {
-        switch productResult {
-        case .failure(let error):
-            print("Error occured \(error)")
-        case .success(let productResponse):
-            dependencies.homeNavigationService.presentDetails(for: productResponse.product)
-        }
-    }
 }

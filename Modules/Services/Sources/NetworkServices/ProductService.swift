@@ -6,14 +6,19 @@
 //
 
 import API
+import Combine
 import Network
 import Swinject
 
-public protocol ProductService {
+public enum ProductServiceError: Error {
+    case mappingError
+    case networkError(NetworkError)
+    case productNotFound
+}
 
-    typealias OnCompleteAction = ProductProvider.OnCompleteAction
-    typealias ProductResult = ProductProvider.ProductResult
-    func product(productId: String, onComplete: @escaping OnCompleteAction)
+public protocol ProductService {
+    typealias ProductResult = Result<Product, ProductServiceError>
+    func product(productId: String) -> AnyPublisher<ProductResponse, ProductServiceError>
 }
 
 public protocol ProductServiceContainer {

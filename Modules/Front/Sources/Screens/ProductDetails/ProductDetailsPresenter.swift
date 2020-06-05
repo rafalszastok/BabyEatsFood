@@ -5,8 +5,8 @@
 //  Created by Rafal Szastok on 05/06/2020.
 //
 
-import UIKit
 import API
+import UIKit
 
 enum ProductDetailsPresenter {
     static func make(
@@ -16,7 +16,7 @@ enum ProductDetailsPresenter {
 
         let storyboard = UIStoryboard(name: "ProductDetails", bundle: nil)
         let viewController: ProductDetailsViewController = storyboard.instantiateViewController()
-            viewController.viewModel = ProductDetailsViewModel(product: product)
+        viewController.viewModel = ProductDetailsViewModel(product: product)
         return viewController
     }
 }

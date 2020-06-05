@@ -5,9 +5,9 @@
 //  Created by Rafal Szastok on 05/06/2020.
 //
 
-import Foundation
 import API
 import Combine
+import Foundation
 
 final class ConcreteHomeNavigationService: HomeNavigationService {
 

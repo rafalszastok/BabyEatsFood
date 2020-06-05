@@ -14,6 +14,7 @@ final class ProductDetailsImageCollectionViewCell: UICollectionViewCell, Reusabl
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         addSubview(imageView)
         let constraints = [
             leadingAnchor.constraint(equalTo: imageView.leadingAnchor),

@@ -12,7 +12,7 @@ final class MainServicesContainer: ProductServiceContainer, HomeNavigationServic
     let homeNavigationService: HomeNavigationService
 
     init() {
-        productService = ConcreteProductService()
+        productService = ConcreteProductService(languageCode: "es")
         homeNavigationService = ConcreteHomeNavigationService()
     }
 }
