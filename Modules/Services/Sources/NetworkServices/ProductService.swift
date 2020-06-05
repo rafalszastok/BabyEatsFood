@@ -12,7 +12,7 @@ import Swinject
 public protocol ProductService {
 
     typealias OnCompleteAction = ProductProvider.OnCompleteAction
-
+    typealias ProductResult = ProductProvider.ProductResult
     func product(productId: String, onComplete: @escaping OnCompleteAction)
 }
 

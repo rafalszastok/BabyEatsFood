@@ -28,27 +28,14 @@ public final class ProductProvider {
         self.entityProvider = EntityProvider<ProductResponse>(session: session)
     }
 
-    public func obtainProduct(productId: String, onComplete: @escaping OnCompleteAction) {
+    public func obtainProduct(languageCode: String, productId: String, onComplete: @escaping OnCompleteAction) {
 
-        let urlString = "https://es.openfoodfacts.org/api/v0/product/\(productId).json"
+        let urlString = "https://\(languageCode).openfoodfacts.org/api/v0/product/\(productId).json"
         guard let url = URL(string: urlString) else {
             return
         }
 
         let urlRequest = URLRequest(url: url)
         entityProvider.obtain(urlRequest: urlRequest, onComplete: onComplete)
-    }
-
-    private func decode(data: Data) -> Result<ProductResponse, Error> {
-
-        let str = String(decoding: data, as: UTF8.self)
-        print("Data is \(str)")
-
-        do {
-            let product = try jsonDecoder.decode(ProductResponse.self, from: data)
-            return .success(product)
-        } catch {
-            return .failure(error)
-        }
     }
 }

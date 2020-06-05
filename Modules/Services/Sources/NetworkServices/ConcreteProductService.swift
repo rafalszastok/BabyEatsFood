@@ -15,6 +15,9 @@ public final class ConcreteProductService: ProductService {
     public init() {}
 
     public func product(productId: String, onComplete: @escaping OnCompleteAction) {
-        productProvider.obtainProduct(productId: productId, onComplete: onComplete)
+        productProvider.obtainProduct(
+            languageCode: "es",
+            productId: productId,
+            onComplete: onComplete)
     }
 }

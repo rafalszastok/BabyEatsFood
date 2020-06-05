@@ -7,10 +7,12 @@
 
 import Services
 
-final class MainServicesContainer: ProductServiceContainer {
+final class MainServicesContainer: ProductServiceContainer, HomeNavigationServiceContainer {
     let productService: ProductService
+    let homeNavigationService: HomeNavigationService
 
     init() {
         productService = ConcreteProductService()
+        homeNavigationService = ConcreteHomeNavigationService()
     }
 }

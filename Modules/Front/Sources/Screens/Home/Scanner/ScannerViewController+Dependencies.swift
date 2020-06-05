@@ -5,8 +5,8 @@
 //  Created by Rafal Szastok on 04/06/2020.
 //
 
-import UIKit
 import Services
+import UIKit
 
 extension ScannerViewController {
     typealias Dependencies = ProductServiceContainer

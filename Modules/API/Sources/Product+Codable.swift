@@ -183,5 +183,21 @@ extension Product {
     public init(from decoder: Decoder) throws {
         let keyedDecoder = try decoder.container(keyedBy: CodingKeys.self)
         self.productName = try keyedDecoder.decode(String.self, forKey: .productName)
+
+        self.imagesUrlDictionary = Product.decodeImage(from: decoder)
     }
+
+    private static func decodeImage(from decoder: Decoder) -> [ImageKind: String] {
+        guard let keyedDecoder = try? decoder.container(keyedBy: ImageKind.self) else {
+            return [:]
+        }
+        var imagesUrlDictionary: [ImageKind: String] = [:]
+        for imageKindKey in ImageKind.allCases {
+            if let imageUrl = try? keyedDecoder.decode(String.self, forKey: imageKindKey) {
+                imagesUrlDictionary[imageKindKey] = imageUrl
+            }
+        }
+        return imagesUrlDictionary
+    }
+
 }

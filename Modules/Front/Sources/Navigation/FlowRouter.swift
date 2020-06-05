@@ -6,29 +6,36 @@
 //
 
 import UIKit
+import API
+import Combine
 
 final class FlowRouter {
     let window: UIWindow
     let mainServicesContainer = MainServicesContainer()
-
+    var subscriptions = Set<AnyCancellable>()
+    
     init(window: UIWindow) {
         self.window = window
+        bind()
     }
 
     func presentHomePage() {
-        let homeTabbar = HomeTabbarPresenter.make()
-        let scannerViewController = homeTabbar.viewControllers![0] as! ScannerViewController
-
-        guard let captureSessionResult = CaptureSessionFactory.make(delegate: scannerViewController) else {
-            assertionFailure("Cannot make capture session")
-            return
-        }
-
-        scannerViewController.inject(
-            dependencies: mainServicesContainer,
-            captureSessionResult: captureSessionResult)
-
-        window.rootViewController = homeTabbar
+        window.rootViewController = HomeTabbarPresenter.make(with: mainServicesContainer)
         window.makeKeyAndVisible()
+    }
+
+    func present(product: Product) {
+        let viewController = ProductDetailsPresenter.make(
+            with: mainServicesContainer,
+            product: product)
+        window.rootViewController?.present(viewController, animated: true)
+    }
+
+    private func bind() {
+        mainServicesContainer
+            .homeNavigationService
+            .productSelectedPublisher
+            .sink(receiveValue: present(product:))
+            .store(in: &subscriptions)
     }
 }
