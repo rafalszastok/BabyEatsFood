@@ -19,6 +19,7 @@ final class ProductDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = viewModel.title
         setupUI()
         setupCollectionView()
     }
