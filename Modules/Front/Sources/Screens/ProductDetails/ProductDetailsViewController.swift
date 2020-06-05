@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProductDetailsViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
 
     var viewModel: ProductDetailsViewModel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.dataSource = self
+    }
 }
 
 extension ProductDetailsViewController: UICollectionViewDataSource {
@@ -20,9 +26,10 @@ extension ProductDetailsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let collectionViewCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "ProductImage",
-            for: indexPath)
+        let imageUrl = viewModel.images[indexPath.row]
+        let collectionViewCell: ProductDetailsImageCollectionViewCell =
+            collectionView.dequeueReusableCell(for: indexPath)
+        collectionViewCell.imageView.kf.setImage(with: imageUrl)
         return collectionViewCell
     }
 
