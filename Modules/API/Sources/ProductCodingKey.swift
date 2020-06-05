@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public struct ProductCodingKey {
     public enum ImageKind: String, CaseIterable, CodingKey {
         case frontSmall = "image_front_small_url"
@@ -21,5 +22,22 @@ public struct ProductCodingKey {
         case small = "image_small_url"
         case thumb = "image_thumb_url"
         case standard = "image_url"
+
+        public var priority: Int {
+            switch self {
+            case .standard:
+                return 10
+            case .front:
+                return 9
+            case .nutrition:
+                return 8
+            case .ingredients:
+                return 7
+            case .small, .frontSmall, .nutritionSmall, .ingredientsSmall:
+                return 6
+            case .frontThumb, .thumb, .ingredientsThumb, .nutritionThumb:
+                return 5
+            }
+        }
     }
 }

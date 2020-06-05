@@ -21,6 +21,18 @@ final class ProductDetailsViewModel {
     }
 
     var images: [URL] {
-        return product.imagesUrlDictionary.values.compactMap(URL.init(string:))
+        return product
+            .imagesUrlDictionary
+            .compactMap { (key, value) -> (Int, URL)? in
+                guard let url = URL(string: value) else {
+                    return nil
+                }
+                return (key.priority, url)
+            }
+            .sorted { (first, second) -> Bool in
+                return first.0 > second.0
+            }
+            .map { $0.1 }
+
     }
 }
