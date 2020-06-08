@@ -1,9 +1,3 @@
-//
-//  Bool+not.swift
-//  API
-//
-//  Created by Rafal Szastok on 04/06/2020.
-//
 
 import Foundation
 
