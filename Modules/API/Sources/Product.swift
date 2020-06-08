@@ -3,6 +3,9 @@ import ObjectMapper
 import UIKit
 
 public struct Product: Codable {
+    public typealias ImageKind = ProductCodingKey.ImageKind
+
+    public let imagesUrlDictionary: [ImageKind: String]
 //    public let additivesOldN: Int?
 //    public let additivesOldTags: [String]
 //    public let allergens: String?
@@ -54,18 +57,6 @@ public struct Product: Codable {
 //    public let genericNameEn: String?
 //    public let genericNameFr: String?
 //    public let id: String?
-//    public let imageFrontSmallURL: String?
-//    public let imageFrontThumbURL: String?
-//    public let imageFrontURL: String?
-//    public let imageIngredientsSmallURL: String?
-//    public let imageIngredientsThumbURL: String?
-//    public let imageIngredientsURL: String?
-//    public let imageNutritionSmallURL: String?
-//    public let imageNutritionThumbURL: String?
-//    public let imageNutritionURL: String?
-//    public let imageSmallURL: String?
-//    public let imageThumbURL: String?
-//    public let imageURL: String?
 //    public let informersTags: [String]
 //    public let ingredients: [Ingredient]
 //    public let ingredientsAnalysisTags: [String]

@@ -14,4 +14,4 @@ include:
   - Modules/front.yml
   - Modules/api.yml
   - Modules/network.yml
-  #- Modules/services.yml
+  - Modules/services.yml

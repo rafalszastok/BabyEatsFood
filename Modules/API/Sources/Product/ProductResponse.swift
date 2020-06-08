@@ -9,7 +9,7 @@ import Foundation
 
 public struct ProductResponse: Codable {
     public let code: String
-    public let product: Product
+    public let product: Product?
     public let status: Int
     public let statusVerbose: String
 
