@@ -1,7 +1,3 @@
-//
-// Created by Marcin Biolik on 09/07/2018.
-// Copyright © 2018 DAZN. All rights reserved.
-//
 
 import UIKit
 
