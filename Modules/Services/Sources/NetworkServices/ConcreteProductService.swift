@@ -8,7 +8,7 @@
 import API
 import Combine
 import Foundation
-import Network
+import OpenFoodFactsNetwork
 
 public final class ConcreteProductService: ProductService {
 

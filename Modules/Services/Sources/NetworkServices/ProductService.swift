@@ -7,7 +7,7 @@
 
 import API
 import Combine
-import Network
+import OpenFoodFactsNetwork
 import Swinject
 
 public enum ProductServiceError: Error {

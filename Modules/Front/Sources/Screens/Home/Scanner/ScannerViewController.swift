@@ -8,41 +8,35 @@
 
 import API
 import AVFoundation
-import Network
+import OpenFoodFactsNetwork
 import Swinject
 import UIKit
 
 final class ScannerViewController: UIViewController {
     let productProvider = ProductProvider()
-
+    var audioVideoCaptureWrapper: AudioVideoCaptureWrapper!
     var viewModel: ScannerViewModel!
     var dependencies: Dependencies!
-    var captureSession: AVCaptureSession!
-    var previewLayer: AVCaptureVideoPreviewLayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.black
-        previewLayer.frame = view.layer.bounds
-        view.layer.addSublayer(previewLayer)
-        captureSession.startRunning()
+        audioVideoCaptureWrapper.insertPreviewLayer(to: view)
+        audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if captureSession.isRunning.not {
-            captureSession.startRunning()
-        }
+
+        audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if captureSession.isRunning {
-            captureSession.stopRunning()
-        }
+        audioVideoCaptureWrapper.stopCaptureSessionIfNeeded()
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -55,11 +49,10 @@ final class ScannerViewController: UIViewController {
 
     func inject(
         viewModel: ScannerViewModel,
-        captureSessionResult: CaptureSessionFactory.ConstructionResult) {
+         audioVideoCaptureWrapper: AudioVideoCaptureWrapper) {
 
         self.viewModel = viewModel
-        captureSession = captureSessionResult.captureSession
-        previewLayer = captureSessionResult.previewLayer
+        self.audioVideoCaptureWrapper = audioVideoCaptureWrapper
     }
 }
 
@@ -76,11 +69,11 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
 
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         viewModel.found(barCode: stringValue)
-        captureSession.stopRunning()
+        audioVideoCaptureWrapper.stopCaptureSessionIfNeeded()
         let dispatchTime = DispatchTime.now() + DispatchTimeInterval.milliseconds(3000)
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
             [weak self] in
-            self?.captureSession.startRunning()
+            self?.audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
 
         }
     }

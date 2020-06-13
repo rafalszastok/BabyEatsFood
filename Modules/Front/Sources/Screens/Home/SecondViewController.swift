@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rafal Szastok. All rights reserved.
 //
 
-import Network
+import OpenFoodFactsNetwork
 import UIKit
 
 final class SecondViewController: UIViewController {

@@ -11,7 +11,7 @@ targets:
     dependencies:
       - carthage: Swinject
       - target: API
-      - target: Network
+      - target: OpenFoodFactsNetwork
     platform: iOS
     type: framework
     scheme:

@@ -13,5 +13,5 @@ settings:
 include:
   - Modules/front.yml
   - Modules/api.yml
-  - Modules/network.yml
+  - Modules/openFoodFactsNetwork.yml
   - Modules/services.yml

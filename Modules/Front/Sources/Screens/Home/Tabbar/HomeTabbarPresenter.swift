@@ -16,15 +16,12 @@ enum HomeTabbarPresenter {
 
         let scannerViewController = homeTabbar.viewControllers![0] as! ScannerViewController
 
-        guard let captureSessionResult = CaptureSessionFactory.make(delegate: scannerViewController) else {
-            assertionFailure("Cannot make capture session")
-            return nil
-        }
-
+        let audioVideoCaptureWrapper = AudioVideoCaptureWrapperFactory
+            .make(delegate: scannerViewController)
         let viewModel = ScannerViewModel(dependencies: dependencies)
         scannerViewController.inject(
             viewModel: viewModel,
-            captureSessionResult: captureSessionResult)
+            audioVideoCaptureWrapper: audioVideoCaptureWrapper)
 
         return homeTabbar
     }
