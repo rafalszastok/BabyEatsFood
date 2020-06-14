@@ -16,7 +16,7 @@ public final class ScannerViewModel {
 
     let dependencies: Dependencies
     var subscriptions = Set<AnyCancellable>()
-    
+
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }

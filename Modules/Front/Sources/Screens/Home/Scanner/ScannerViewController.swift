@@ -29,8 +29,10 @@ final class ScannerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        viewModel.found(barCode: "5900617034786")
+        return
 
-        audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
+            audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +51,7 @@ final class ScannerViewController: UIViewController {
 
     func inject(
         viewModel: ScannerViewModel,
-         audioVideoCaptureWrapper: AudioVideoCaptureWrapper) {
+        audioVideoCaptureWrapper: AudioVideoCaptureWrapper) {
 
         self.viewModel = viewModel
         self.audioVideoCaptureWrapper = audioVideoCaptureWrapper

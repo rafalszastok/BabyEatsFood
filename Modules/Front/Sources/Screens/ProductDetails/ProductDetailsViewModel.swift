@@ -30,7 +30,7 @@ final class ProductDetailsViewModel {
                 return (key.priority, url)
             }
             .sorted { (first, second) -> Bool in
-                return first.0 > second.0
+                first.0 > second.0
             }
             .map { $0.1 }
 

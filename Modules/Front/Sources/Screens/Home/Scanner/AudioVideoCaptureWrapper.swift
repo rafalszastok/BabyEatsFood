@@ -5,8 +5,8 @@
 //  Created by Rafal Szastok on 13/06/2020.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
 final class AudioVideoCaptureWrapper {
     private let captureSession: AVCaptureSession?
@@ -53,14 +53,14 @@ enum AudioVideoCaptureWrapperFactory {
     static func make(delegate: AVCaptureMetadataOutputObjectsDelegate?)
         -> AudioVideoCaptureWrapper {
 
-        #if targetEnvironment(simulator)
+#if targetEnvironment(simulator)
 
-            return AudioVideoCaptureWrapper(
-                captureSession: nil,
-                previewLayer: nil)
-        #else
+        return AudioVideoCaptureWrapper(
+            captureSession: nil,
+            previewLayer: nil)
+#else
         let result = CaptureSessionFactory.make(delegate: scannerViewController)
         return AudioVideoCaptureWrapper()
-        #endif
+#endif
     }
 }
