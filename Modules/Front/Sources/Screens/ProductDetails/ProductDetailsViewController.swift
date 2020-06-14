@@ -54,15 +54,17 @@ final class ProductDetailsViewController: UIViewController {
             image: UIImage(named: "healthcare-and-medical"),
             circleProgressColor: ColorPalette.caribbeanGreen.asUIColor,
             circleFillerColor: ColorPalette.whisper.asUIColor,
-            percentage: 0.95,
-            lineWidth: 10)
+            progress: 0.50,
+            lineWidth: 10,
+            scoreCircleRadius: 11)
 
         environmentScoreView.model = CircleScoreModel(
             image: UIImage(named: "world"),
             circleProgressColor: ColorPalette.brinkPink.asUIColor,
             circleFillerColor: ColorPalette.whisper.asUIColor,
-            percentage: 0.35,
-            lineWidth: 10)
+            progress: 0.25,
+            lineWidth: 10,
+            scoreCircleRadius: 11)
     }
 }
 

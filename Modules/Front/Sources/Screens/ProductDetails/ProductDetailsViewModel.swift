@@ -20,6 +20,10 @@ final class ProductDetailsViewModel {
         return product.productName ?? ""
     }
 
+    var nutritionScore: Int? {
+        return product.nutriscoreScore
+    }
+
     var images: [URL] {
         return product
             .imagesUrlDictionary
