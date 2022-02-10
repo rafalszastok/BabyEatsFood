@@ -1,6 +1,6 @@
 name: BabyEatsFood
 
-fileGroups: [README.md, Cartfile,  .gitignore, .swiftlint.yml, .swiftformat, project.yml]
+fileGroups: [README.md, .gitignore, .swiftlint.yml, .swiftformat, project.yml]
 
 options:
   deploymentTarget: 
@@ -13,5 +13,37 @@ settings:
 include:
   - Modules/front.yml
   - Modules/api.yml
-  - Modules/network.yml
+  - Modules/openFoodFactsNetwork.yml
   - Modules/services.yml
+
+packages:
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher
+    exactVersion: 7.1.2
+  Nimble:
+    url: https://github.com/Quick/Nimble
+    exactVersion: 9.0.0
+  RealmSwift:
+    url: https://github.com/realm/realm-cocoa
+    exactVersion: 10.22.0
+  Vinyl:
+    url: git@github.com:getndazn/Vinyl.git
+    revision: 4438d50c0327eced26c29150f3ab16c3c44eb803
+  Swinject:
+    url: https://github.com/Swinject/Swinject.git
+    exactVersion: 2.7.1
+  SwinjectAutoregistration:
+    url: https://github.com/Swinject/SwinjectAutoregistration.git
+    exactVersion: 2.7.0
+  Lottie:
+    url: git@github.com:airbnb/lottie-ios.git
+    exactVersion: 3.2.3
+  SnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing.git
+    exactVersion: 1.9.0
+  ObjectMapper:
+    url: https://github.com/tristanhimmelman/ObjectMapper
+    exactVersion: 4.2.0
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    exactVersion: 6.5.0

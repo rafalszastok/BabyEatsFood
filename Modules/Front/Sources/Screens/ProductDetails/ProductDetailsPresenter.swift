@@ -12,7 +12,8 @@ enum ProductDetailsPresenter {
     static func make(
         with dependencies: ProductDetailsViewModel.Dependencies,
         product: Product)
-        -> ProductDetailsViewController {
+        -> ProductDetailsViewController
+    {
 
         let storyboard = UIStoryboard(name: "ProductDetails", bundle: nil)
         let viewController: ProductDetailsViewController = storyboard.instantiateViewController()

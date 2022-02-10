@@ -20,6 +20,10 @@ final class ProductDetailsViewModel {
         return product.productName ?? ""
     }
 
+    var nutritionScore: Int? {
+        return product.nutriscoreScore
+    }
+
     var images: [URL] {
         return product
             .imagesUrlDictionary
@@ -30,7 +34,7 @@ final class ProductDetailsViewModel {
                 return (key.priority, url)
             }
             .sorted { (first, second) -> Bool in
-                return first.0 > second.0
+                first.0 > second.0
             }
             .map { $0.1 }
 

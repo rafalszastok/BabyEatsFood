@@ -10,6 +10,10 @@ import Foundation
 extension Product {
 
     enum CodingKeys: String, CodingKey {
+        case nutritionGrades = "nutrition_grades"
+        case nutriscoreScore = "nutriscore_score"
+        case novaGroup = "nova_group"
+        case productName = "product_name"
 //        case additivesN = "additives_n"
 //        case additivesOldN = "additives_old_n"
 //        case additivesOldTags = "additives_old_tags"
@@ -128,7 +132,6 @@ extension Product {
 //        case nutriments
 //        case nutriscoreData = "nutriscore_data"
 //        case nutriscoreGrade = "nutriscore_grade"
-//        case nutriscoreScore = "nutriscore_score"
 //        case nutritionData = "nutrition_data"
 //        case nutritionDataPer = "nutrition_data_per"
 //        case nutritionDataPerImported = "nutrition_data_per_imported"
@@ -150,7 +153,6 @@ extension Product {
 //        case pnnsGroups2_Tags = "pnns_groups_2_tags"
 //        case popularityTags = "popularity_tags"
 //        case productID = "id"
-        case productName = "product_name"
 //        case productNameEn = "product_name_en"
 //        case productNameEnImported = "product_name_en_imported"
 //        case productNameFr = "product_name_fr"
@@ -182,8 +184,10 @@ extension Product {
 
     public init(from decoder: Decoder) throws {
         let keyedDecoder = try decoder.container(keyedBy: CodingKeys.self)
-        self.productName = try keyedDecoder.decode(String.self, forKey: .productName)
-
+        self.productName = try? keyedDecoder.decode(String.self, forKey: .productName)
+        self.nutritionGrades = try? keyedDecoder.decode(String.self, forKey: .nutritionGrades)
+        self.nutriscoreScore = try? keyedDecoder.decode(Int.self, forKey: .nutriscoreScore)
+        self.novaGroup = try? keyedDecoder.decode(String.self, forKey: .novaGroup)
         self.imagesUrlDictionary = Product.decodeImage(from: decoder)
     }
 

@@ -15,15 +15,11 @@ public enum NetworkError: Error {
     case httpError
     case noInternetConnection
     case parsingFailed(error: Error)
-
 }
 
 public final class ProductProvider {
     private let entityProvider: EntityProvider<ProductResponse>
     private let jsonDecoder = JSONDecoder()
-
-    public typealias ProductResult = Result<ProductResponse, NetworkError>
-    public typealias OnCompleteAction = (ProductResult) -> Void
 
     public init(session: URLSession = URLSession.shared) {
         self.entityProvider = EntityProvider<ProductResponse>(session: session)

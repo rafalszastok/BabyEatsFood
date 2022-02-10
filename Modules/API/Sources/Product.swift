@@ -6,6 +6,10 @@ public struct Product: Codable {
     public typealias ImageKind = ProductCodingKey.ImageKind
 
     public let imagesUrlDictionary: [ImageKind: String]
+    public let productName: String?
+    public let nutritionGrades: String?
+    public let nutriscoreScore: Int?
+    public let novaGroup: String?
 //    public let additivesOldN: Int?
 //    public let additivesOldTags: [String]
 //    public let allergens: String?
@@ -112,8 +116,6 @@ public struct Product: Codable {
 //    public let nutrientLevelsTags: [String]
 //    public let nutriments: Nutriments?
 //    public let nutriscoreData: NutriscoreData?
-//    public let nutriscoreGrade: String?
-//    public let nutriscoreScore: Int?
 //    public let nutritionData: String?
 //    public let nutritionDataPer: String?
 //    public let nutritionDataPerImported: String?
@@ -136,7 +138,6 @@ public struct Product: Codable {
 //    public let pnnsGroups2_Tags: [String]
 //    public let popularityTags: [String]
 //    public let productID: String?
-    public let productName: String?
 //    public let productNameEn: String?
 //    public let productNameEnImported: String?
 //    public let productNameFr: String?

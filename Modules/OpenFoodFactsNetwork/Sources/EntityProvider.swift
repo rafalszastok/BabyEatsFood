@@ -32,7 +32,8 @@ public final class EntityProvider<EntityType: Decodable> {
             .dataTaskPublisher(for: urlRequest)
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse,
-                    httpResponse.statusCode == 200 else {
+                      httpResponse.statusCode == 200
+                else {
                     throw EntityError.invalidHttpResponse(response)
                 }
                 return data

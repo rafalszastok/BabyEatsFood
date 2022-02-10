@@ -17,14 +17,12 @@ targets:
         name: Front
     dependencies:
       - target: API
-      - target: Network
       - target: Services
       - sdk: CoreServices.framework
       - sdk: AVFoundation.framework
-      - carthage: Kingfisher
-      - carthage: Realm
-      - carthage: RealmSwift
-      - carthage: ObjectMapper
+      - package: Kingfisher
+      - package: RealmSwift
+      - package: ObjectMapper
     scheme:
       name: "BabyEatsFood"
       
@@ -45,4 +43,3 @@ targets:
         name: FrontSnapshotTests
     dependencies:
       - target: BabyEatsFood
-      - carthage: FBSnapshotTestCase      

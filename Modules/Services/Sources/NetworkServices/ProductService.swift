@@ -7,8 +7,7 @@
 
 import API
 import Combine
-import Network
-import Swinject
+import OpenFoodFactsNetwork
 
 public enum ProductServiceError: Error {
     case mappingError
@@ -17,7 +16,6 @@ public enum ProductServiceError: Error {
 }
 
 public protocol ProductService {
-    typealias ProductResult = Result<Product, ProductServiceError>
     func product(productId: String) -> AnyPublisher<ProductResponse, ProductServiceError>
 }
 

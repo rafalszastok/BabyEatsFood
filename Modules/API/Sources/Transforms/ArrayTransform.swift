@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import ObjectMapper
 
 public final class ArrayTransform: TransformType {

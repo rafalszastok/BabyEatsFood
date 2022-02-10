@@ -29,4 +29,4 @@
 --disable blankLinesAroundMark,blankLinesAtEndOfScope,blankLinesAtStartOfScope,blankLinesBetweenScopes,redundantSelf,trailingClosures,andOperator
 
 # exclude files
---exclude Carthage,build,Conviva,container,cucumber,ExternalResources,fastlane,Firebase,fonts,hooks,Scripts,TotalRekall/TotalRekallTests
+--exclude build,Conviva,container,cucumber,ExternalResources,fastlane,Firebase,fonts,hooks,Scripts,TotalRekall/TotalRekallTests
