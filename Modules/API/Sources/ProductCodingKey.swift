@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ProductCodingKey {
+public enum ProductCodingKey {
     public enum ImageKind: String, CaseIterable, CodingKey {
         case frontSmall = "image_front_small_url"
         case frontThumb = "image_front_thumb_url"

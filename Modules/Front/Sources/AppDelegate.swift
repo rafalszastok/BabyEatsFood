@@ -14,7 +14,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
         _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
-        -> Bool {
+        -> Bool
+    {
         return true
     }
 
@@ -22,7 +23,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _: UIApplication,
         configurationForConnecting connectingSceneSession: UISceneSession,
         options _: UIScene.ConnectionOptions)
-        -> UISceneConfiguration {
+        -> UISceneConfiguration
+    {
 
         return UISceneConfiguration(
             name: "Default Configuration",

@@ -9,7 +9,6 @@
 import API
 import AVFoundation
 import OpenFoodFactsNetwork
-import Swinject
 import UIKit
 
 final class ScannerViewController: UIViewController {
@@ -30,9 +29,7 @@ final class ScannerViewController: UIViewController {
         super.viewWillAppear(animated)
 
         viewModel.found(barCode: "5900617034786")
-        return
-
-            audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
+        return audioVideoCaptureWrapper.startCaptureSessionIfNeeded()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,7 +48,8 @@ final class ScannerViewController: UIViewController {
 
     func inject(
         viewModel: ScannerViewModel,
-        audioVideoCaptureWrapper: AudioVideoCaptureWrapper) {
+        audioVideoCaptureWrapper: AudioVideoCaptureWrapper)
+    {
 
         self.viewModel = viewModel
         self.audioVideoCaptureWrapper = audioVideoCaptureWrapper
@@ -63,8 +61,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
 
         guard let metadataObject = metadataObjects.first,
-            let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
-            let stringValue = readableObject.stringValue else {
+              let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
+              let stringValue = readableObject.stringValue
+        else {
 
             return
         }

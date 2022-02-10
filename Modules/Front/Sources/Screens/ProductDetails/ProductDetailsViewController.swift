@@ -50,22 +50,22 @@ final class ProductDetailsViewController: UIViewController {
     }
 
     private func setupScores() {
-
-        healthScoreView.model = CircleScoreModel(
-            image: UIImage(named: "healthcare-and-medical"),
-            circleProgressColor: ColorPalette.caribbeanGreen.asUIColor,
-            circleFillerColor: ColorPalette.whisper.asUIColor,
-            progress: CGFloat(viewModel.nutritionScore ?? 0) / 100,
-            lineWidth: 10,
-            scoreCircleRadius: 11)
-
-        environmentScoreView.model = CircleScoreModel(
-            image: UIImage(named: "world"),
-            circleProgressColor: ColorPalette.brinkPink.asUIColor,
-            circleFillerColor: ColorPalette.whisper.asUIColor,
-            progress: 0.73,
-            lineWidth: 10,
-            scoreCircleRadius: 11)
+//
+//        healthScoreView.model = CircleScoreModel(
+//            image: UIImage(named: "healthcare-and-medical"),
+//            circleProgressColor: ColorPalette.caribbeanGreen.asUIColor,
+//            circleFillerColor: ColorPalette.whisper.asUIColor,
+//            progress: CGFloat(viewModel.nutritionScore ?? 0) / 100,
+//            lineWidth: 10,
+//            scoreCircleRadius: 11)
+//
+//        environmentScoreView.model = CircleScoreModel(
+//            image: UIImage(named: "world"),
+//            circleProgressColor: ColorPalette.brinkPink.asUIColor,
+//            circleFillerColor: ColorPalette.whisper.asUIColor,
+//            progress: 0.73,
+//            lineWidth: 10,
+//            scoreCircleRadius: 11)
     }
 }
 

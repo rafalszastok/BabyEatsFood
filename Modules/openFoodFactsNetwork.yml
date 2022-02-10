@@ -9,7 +9,7 @@ targets:
       - path: OpenFoodFactsNetwork/Sources
         name: OpenFoodFactsNetwork
     dependencies:
-      - carthage: ObjectMapper
+      - package: ObjectMapper
       - target: API
     platform: iOS
     type: framework

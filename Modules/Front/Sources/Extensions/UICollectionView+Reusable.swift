@@ -6,13 +6,15 @@ public extension UICollectionView {
     func dequeueReusableCell<T: UICollectionViewCell>(
         for indexPath: IndexPath,
         ofType cellType: T.Type = T.self,
-        customIdentifier: String? = nil) -> T where T: ReusableView {
+        customIdentifier: String? = nil) -> T where T: ReusableView
+    {
 
         let identifier = customIdentifier ?? cellType.identifier
 
         guard let cell = tryToDequeueReusableCell(
             withReuseIdentifier: identifier,
-            for: indexPath) as? T else {
+            for: indexPath) as? T
+        else {
 
             register(
                 cellType,
@@ -30,13 +32,15 @@ public extension UICollectionView {
     func dequeueReusableCell<T: UICollectionViewCell>(
         for indexPath: IndexPath,
         ofType cellType: T.Type = T.self,
-        customIdentifier: String? = nil) -> T where T: ReusableNibView {
+        customIdentifier: String? = nil) -> T where T: ReusableNibView
+    {
 
         let identifier = customIdentifier ?? cellType.identifier
 
         guard let cell = tryToDequeueReusableCell(
             withReuseIdentifier: identifier,
-            for: indexPath) as? T else {
+            for: indexPath) as? T
+        else {
 
             register(
                 cellType.nib,
@@ -55,14 +59,16 @@ public extension UICollectionView {
         ofKind elementKind: String,
         for indexPath: IndexPath,
         ofType viewType: T.Type = T.self,
-        customIdentifier: String? = nil) -> T where T: ReusableView {
+        customIdentifier: String? = nil) -> T where T: ReusableView
+    {
 
         let identifier = customIdentifier ?? viewType.identifier
 
         guard let view = tryToDequeueReusableSupplementaryView(
             ofKind: elementKind,
             withReuseIdentifier: viewType.identifier,
-            for: indexPath) as? T else {
+            for: indexPath) as? T
+        else {
 
             register(
                 viewType,
@@ -83,14 +89,16 @@ public extension UICollectionView {
         ofKind elementKind: String,
         for indexPath: IndexPath,
         ofType viewType: T.Type = T.self,
-        customIdentifier: String? = nil) -> T where T: ReusableNibView {
+        customIdentifier: String? = nil) -> T where T: ReusableNibView
+    {
 
         let identifier = customIdentifier ?? viewType.identifier
 
         guard let view = tryToDequeueReusableSupplementaryView(
             ofKind: elementKind,
             withReuseIdentifier: identifier,
-            for: indexPath) as? T else {
+            for: indexPath) as? T
+        else {
 
             register(
                 viewType.nib,

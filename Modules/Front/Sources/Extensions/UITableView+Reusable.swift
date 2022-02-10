@@ -4,7 +4,8 @@ import UIKit
 public extension UITableView {
 
     func dequeueReusableCell<T: UITableViewCell>(ofType cellType: T.Type = T.self) -> T
-        where T: ReusableView {
+        where T: ReusableView
+    {
 
         guard let cell = dequeueReusableCell(withIdentifier: cellType.identifier) as? T else {
 
@@ -16,7 +17,8 @@ public extension UITableView {
     }
 
     func dequeueReusableCell<T: UITableViewCell>(ofType cellType: T.Type = T.self) -> T
-        where T: ReusableNibView {
+        where T: ReusableNibView
+    {
 
         guard let cell = dequeueReusableCell(withIdentifier: cellType.identifier) as? T else {
 
@@ -28,7 +30,8 @@ public extension UITableView {
     }
 
     func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(ofType viewType: T.Type = T.self) -> T
-        where T: ReusableView {
+        where T: ReusableView
+    {
 
         guard let view = dequeueReusableHeaderFooterView(withIdentifier: viewType.identifier) as? T else {
 
@@ -40,7 +43,8 @@ public extension UITableView {
     }
 
     func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(ofType viewType: T.Type = T.self) -> T
-        where T: ReusableNibView {
+        where T: ReusableNibView
+    {
 
         guard let view = dequeueReusableHeaderFooterView(withIdentifier: viewType.identifier) as? T else {
 

@@ -14,7 +14,8 @@ final class AudioVideoCaptureWrapper {
 
     init(
         captureSession: AVCaptureSession?,
-        previewLayer: AVCaptureVideoPreviewLayer?) {
+        previewLayer: AVCaptureVideoPreviewLayer?)
+    {
         self.captureSession = captureSession
         self.previewLayer = previewLayer
     }
@@ -51,7 +52,8 @@ final class AudioVideoCaptureWrapper {
 
 enum AudioVideoCaptureWrapperFactory {
     static func make(delegate: AVCaptureMetadataOutputObjectsDelegate?)
-        -> AudioVideoCaptureWrapper {
+        -> AudioVideoCaptureWrapper
+    {
 
 #if targetEnvironment(simulator)
 

@@ -9,7 +9,7 @@ targets:
       - path: API/Sources
         name: API
     dependencies:
-      - carthage: ObjectMapper
+      - package: ObjectMapper
     platform: iOS
     type: framework
     scheme:
