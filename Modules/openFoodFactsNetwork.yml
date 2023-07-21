@@ -1,0 +1,31 @@
+targets:
+  OpenFoodFactsNetwork:
+    settings:
+      base:
+        APPLICATION_EXTENSION_API_ONLY: true
+        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood.network
+        SWIFT_VERSION: 5.1
+    sources: 
+      - path: OpenFoodFactsNetwork/Sources
+        name: OpenFoodFactsNetwork
+    dependencies:
+      - package: ObjectMapper
+      - target: API
+    platform: iOS
+    type: framework
+    scheme:
+      testTargets:
+        - OpenFoodFactsNetworkTests
+      gatherCoverageData: true
+  OpenFoodFactsNetworkTests:
+    dependencies:
+      - target: OpenFoodFactsNetwork
+    platform: iOS
+    scheme:
+      testTargets:
+        - OpenFoodFactsNetworkTests
+    gatherCoverageData: true
+    sources:
+      - path: OpenFoodFactsNetwork/UnitTests
+        name: OpenFoodFactsNetworkUnitTests
+    type: bundle.unit-test

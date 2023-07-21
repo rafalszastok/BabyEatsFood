@@ -1,0 +1,30 @@
+targets:
+  API:
+    settings:
+      base:
+        APPLICATION_EXTENSION_API_ONLY: true
+        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood.api
+        SWIFT_VERSION: 5.1
+    sources: 
+      - path: API/Sources
+        name: API
+    dependencies:
+      - package: ObjectMapper
+    platform: iOS
+    type: framework
+    scheme:
+      testTargets:
+        - APITests
+      gatherCoverageData: true
+  APITests:
+    dependencies:
+      - target: API
+    platform: iOS
+    scheme:
+      testTargets:
+        - APITests
+    gatherCoverageData: true
+    sources:
+      - path: API/UnitTests
+        name: APIUnitTests
+    type: bundle.unit-test

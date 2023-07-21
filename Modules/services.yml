@@ -1,0 +1,32 @@
+targets:
+  Services:
+    settings:
+      base:
+        APPLICATION_EXTENSION_API_ONLY: true
+        PRODUCT_BUNDLE_IDENTIFIER: org.babyeatsfood.services
+        SWIFT_VERSION: 5.1
+    sources: 
+      - path: Services/Sources
+        name: Services
+    dependencies:
+      - package: Swinject
+      - target: API
+      - target: OpenFoodFactsNetwork
+    platform: iOS
+    type: framework
+    scheme:
+      testTargets:
+        - ServicesTests
+      gatherCoverageData: true
+  ServicesTests:
+    dependencies:
+      - target: Services
+    platform: iOS
+    scheme:
+      testTargets:
+        - ServicesTests
+    gatherCoverageData: true
+    sources:
+      - path: Services/UnitTests
+        name: ServicesUnitTests
+    type: bundle.unit-test
