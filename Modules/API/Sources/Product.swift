@@ -1,5 +1,4 @@
 import Foundation
-import ObjectMapper
 import UIKit
 
 public struct Product: Codable {
