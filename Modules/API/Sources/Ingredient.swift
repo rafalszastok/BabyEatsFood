@@ -1,6 +1,5 @@
 
 import Foundation
-import ObjectMapper
 
 public struct Ingredient: Codable {
     let vegetarian: String?

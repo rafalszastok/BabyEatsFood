@@ -4,10 +4,10 @@ fileGroups: [README.md, .gitignore, .swiftlint.yml, .swiftformat, project.yml]
 
 options:
   deploymentTarget: 
-    iOS: 13.0
+    iOS: 16.0
 
 settings:
-  SWIFT_VERSION: 5.1
+  SWIFT_VERSION: 5.9
   CODE_SIGN_IDENTITY: iPhone Developer
 
 include:
@@ -19,25 +19,22 @@ include:
 packages:
   Kingfisher:
     url: https://github.com/onevcat/Kingfisher
-    exactVersion: 7.1.2
+    exactVersion: 7.9.1
   Nimble:
     url: https://github.com/Quick/Nimble
-    exactVersion: 9.0.0
+    exactVersion: 12.3.0
   RealmSwift:
     url: https://github.com/realm/realm-cocoa
-    exactVersion: 10.22.0
-  Vinyl:
-    url: git@github.com:getndazn/Vinyl.git
-    revision: 4438d50c0327eced26c29150f3ab16c3c44eb803
+    exactVersion: 10.43.0
   Swinject:
     url: https://github.com/Swinject/Swinject.git
-    exactVersion: 2.7.1
+    exactVersion: 2.8.4
   SwinjectAutoregistration:
     url: https://github.com/Swinject/SwinjectAutoregistration.git
-    exactVersion: 2.7.0
+    exactVersion: 2.8.3
   Lottie:
     url: git@github.com:airbnb/lottie-ios.git
-    exactVersion: 3.2.3
+    exactVersion: 4.3.3
   SnapshotTesting:
     url: https://github.com/pointfreeco/swift-snapshot-testing.git
     exactVersion: 1.9.0
@@ -46,4 +43,4 @@ packages:
     exactVersion: 4.2.0
   RxSwift:
     url: https://github.com/ReactiveX/RxSwift
-    exactVersion: 6.5.0
+    exactVersion: 6.6.0
